@@ -1,0 +1,57 @@
+This has been my most enjoyable game jam to date.
+
+When the theme was announced, immediately I had an idea for what I wanted to do, and just started getting to work: Put a gun turret on a spinning circle and hit targets. 
+
+I fired up GameMaker, and got right to it. I took a simple approach. I wanted the planet to be generated procedurally, so I wrote a simple script to randomize the radius of a circle that I drew to the screen, then wrote a bit of code to turn that circle drawing into a sprite, so that GameMaker would provide me with a free collision mask. 
+
+I knew I needed the planet to spin, so I added a bit of code to set a random rotation speed. I wasn't sure what range of speeds to use, so I took a guess, and then tweaked for a couple of iterations, until I had what I felt like a min and max that were not too slow or too fast.
+
+At 9:36, I tweeted a .gif screen cap of my WIP, consisting of a spinning world, floating in space, and nothing else. 
+
+![It's a start!](///raw/610/1/z/1268.gif)
+
+Next, I got to work on the player turret sprite. This didn't take long at all. I just drew a grey circle and squared the bottom of it, then extruded the base a bit so that it would leave no gaps on the bottom due to the curvature of the planet surface. Originally I drew it in a vertical orientation, but once I felt happy with it, I rotated it 90deg clockwise so that its angle would match GMS's built-in 0-angle. Then I created an object for it, and added a bit of code in the Planet object, to create a Turret instance and position it at the edge of the planet. Tested it, and it looked right. 
+
+Then I added code to make the turret spin around the planet in sync with the planet's rotating sprite. Easy. But the turret sprite didn't change its orientation, so I added some code to keep the turret's image_angle in sync with the planet's. 
+
+All this was very easy to do and went smoothly, I didn't have any problems, and it felt good. Everything worked pretty much on the first try.
+
+Then I drew a gun sprite, and created a gun object, and wrote a little code that updated the gun's position every time the Turret's position updated. Next, I added some code that allowed the player to adjust the gun's elevation. This was more complex, since the sprite itself has to rotate as the planet revolves, but I figured out a simple approach to do this and it worked, again on the first try.
+
+Next I made a Target object, which is basically a Turret with a bullseye painted on it. I added some code to the game to put Targets at random angle-offsets from the player, so that they would be distributed about the planet.
+
+Next, I created a bullet object, and added code to the game to control firing the bullet. The bullet starts with an initial velocity that can be adjusted by the player, so I added code for adjusting the gun power and firing. Then I added code to give the bullet gravity in the direction of the center of the planet, and a little bit of friction so that if the bullet ended up in a stable orbit, it would eventually decay and crash into the planet. Added collision Events for planet, player, and target.
+
+Playable proof of concept was complete a little after 11pm, just 2hrs into the jam. I felt very good about how quickly it was coming together, and how easily.
+
+![WIP 3hrs](///raw/610/1/z/12b8.gif)
+
+Next, I needed a few controller objects to handle a few things: level clear detection, level resets, displaying the dashboard, developer cheats. The dashboard was easy, it just draws text to the screen. Since a lot of this text is gamestate data, I decided to use the dashboard object to store this data. This meant that the dashboard object eventually became complicated and important. The two most complex objects in the game ended up being the dashboard and the planet.
+
+In the bullet object, I added code to the Collision(Target) event to check whether there are any more targets left, and if not to display a Level Up object, which increases the game's level and spawns a new level. There's quite a bit of complexity in here, as well. I'm destroying the planet and player object and re-creating them anew, so that the procedural randomness in the planet generation will take effect. Also added collision detection for Bullet-Player, so there's "suicide" and a way to lose, so I added a "Game Over" object to handle that. Very pleased, I went to bed around 3:30AM.
+
+## Day 2
+
+I woke at 9:18AM Saturday. After I got this much done, I thought about where else I could take this concept. I decided not to try to implement an enemy that can shoot back, because I liked the laid back, relaxed feel of the game, and felt that it was enjoyable enough to just leisurely shoot at targets. So I decided instead to try to make a 2-planet level. Not wanting to screw up what I had, I created a second room to use as an experimental space for two-planet levels.
+
+![2 planets are > 1](///raw/610/1/z/12c0.png)
+
+This is where things started getting tricky. There were many assumptions buried in my Planet object, where it assumes that it is the only instance of its type in the game. These assumptions lead to a great number of problems when I added a second planet to the room. All the targets that spawned appeared on one planet, leaving the other bare. I figured out that this was because the second planet "steals" all the Targets when it updates their position during rotation. I had to update the bullet gravity code to set the gravity_direction to the location of the *nearest* planet, not *the* planet. 
+ There's also a bug (which I left in, but may yet fix) where the strength of gravity is set by one of the planets, and not the other. Most of these bugs were simple to track down and fix.
+
+I had to take a break around 4:30pm, and returned to the project around 10pm. I had a "Win" screen, so the game had an ending. I figured it was almost completed, and just a bit more work to tweak and test and polish and the game would be done. What would I do Sunday? I had so much time.
+
+At this point, stuff was starting to get really screwy. I was noticing all kinds of weird glitches, and it was taking some effort to sort out what was happening. Most of it was crashes due to referencing variables that didn't exist, but should have. Most of this was due to various logic errors that I hadn't caught, and was referencing a variable in the wrong context. GameMaker's error messages are less helpful than they might be, for this type of problem, so it took a lot of investigation to figure them out. And they kept happening. I was moving code around to put it in a place where it more properly belonged, to fix issues I had noticed, and this was creating new problems.
+
+By 1AM, I had a Title screen, the design of which I think is inspired. I'm really happy with it. It tells you everything you need to know simply, and introduces you to the core gameplay immediately. 
+
+I ended up working until 6AM Sunday morning, but I fixed almost all of the problems. Along the way I had done extensive level testing, and polishing. One of the things I did that I think was smart was to adjust the position of the planets in a 2-planet level so that the average of their positions is the center of the level. I also added the explosion effects, which added a little bit of "juice" to the game, and made near-misses less frustrating. I also randomized the planet color, for more variety.
+
+## Day 3
+I slept from about 7AM until noon Sunday, then got right back to it. More testing and more debugging followed, until I felt it was ready to publish. I received some feedback very quickly from players who had experienced a strange bug that I could not replicate. I ended up fixing it after I realized it was caused by using Draw functions in the Create event. The last thing I did was add "Googly Eye" mode, unlockable after first playthrough.
+
+![How to make game 10x better?](///raw/610/1/z/12aa.png) 
+
+And that's that. This was my first jam where I hit 100% completion on all goals. I'm really satisfied w/ how it came out. I really enjoyed working on the project. Hope you like it too.
+
+# [Play and Rate TARJECTORIES](https://ldjam.com/events/ludum-dare/38/tarjectories)
