@@ -46,7 +46,7 @@ level_points[global.level] = 0;
 level_timer[global.level] = 0;
 
 //Scorekeeping
-global.score = 0;
+score = 0;
 global.consecutive_hits = 0;
 
 global.eyes_unlocked = false;
@@ -104,7 +104,7 @@ if debug_mode
 }
 
 dashboard_text = "Level: " + string(global.level) + "#";
-dashboard_text += "Score: " + string(global.score) + "#";
+dashboard_text += "Score: " + string(score) + "#";
 dashboard_text += "Hit/Miss: " + string(level_hits[global.level]) + "/" + string(level_misses[global.level]) + "#";
 dashboard_text += "Bonus time: " + string(level_timer[global.level] div room_speed);
 </string>

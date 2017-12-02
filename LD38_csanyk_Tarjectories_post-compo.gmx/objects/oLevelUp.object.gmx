@@ -38,20 +38,20 @@ timer_bonus = global.level * global.dashboard.level_timer[global.level] * 10;
 if timer_bonus &gt; 0
 {
     text += "##Timer bonus: " + string(timer_bonus);
-    global.score += timer_bonus;
+    score += timer_bonus;
 }
 
 if global.dashboard.level_misses[global.level] == 0
 {
     perfect_bonus = power(10000 * global.dashboard.level_hits[global.level], instance_number(oPlanet)); //if you get a perfect score on a multi-planet level you deserve it
     text += "##Perfect bonus: " + string(perfect_bonus) + "!!!!";
-    global.score += perfect_bonus;
+    score += perfect_bonus;
 }
 else
 {
     level_bonus = global.dashboard.level_points[global.level] * global.dashboard.level_hits[global.level] / global.dashboard.level_misses[global.level];
     text += "##Level bonus: " + string(level_bonus);
-    global.score += level_bonus;
+    score += level_bonus;
 }
 
 

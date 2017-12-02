@@ -34,7 +34,7 @@ if !global.eyes_unlocked
 {
     text += "##!!GOOGLY EYE MODE UNLOCKED!!##";
 }
-text += "##Your score was: " + string(global.score) + " pts.";
+text += "##Your score was: " + string(score) + " pts.";
 text += "##Hits: " + string(global.dashboard.total_hits) + "/" + string(global.dashboard.total_shots) + " = " + string(global.dashboard.total_hits/global.dashboard.total_shots) + "%";
 text += "##Press any key to start a new game, #or press Esc to exit.###csanyk for LD48-38##XXV - Apr MMXVII ## @csanyk | https://csanyk.com";
 </string>

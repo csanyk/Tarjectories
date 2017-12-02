@@ -87,7 +87,7 @@ if collateral_damage != noone
     with(collateral_damage) instance_destroy();
     
     //score up
-    global.score += (500 * power(2, global.consecutive_hits));
+    score += (500 * power(2, global.consecutive_hits));
     global.dashboard.level_points[global.level] += (500 * power(2, global.consecutive_hits));
 
     sc = instance_create(x, y, oScore);

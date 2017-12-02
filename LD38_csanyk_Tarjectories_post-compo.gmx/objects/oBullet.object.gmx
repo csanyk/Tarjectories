@@ -167,7 +167,7 @@ with(other) instance_destroy();
 
 //score up   
 
-global.score += (1000 * power(2, global.consecutive_hits));
+score += (1000 * power(2, global.consecutive_hits));
 global.dashboard.level_points[global.level] += (1000 * power(2, global.consecutive_hits));
 
 sc = instance_create(x, y, oScore);
