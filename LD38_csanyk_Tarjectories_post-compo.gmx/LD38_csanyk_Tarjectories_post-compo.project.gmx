@@ -140,7 +140,7 @@
     <constant name="INPUT_LEFT">keyboard_check(vk_left) || keyboard_check(ord("A"))</constant>
     <constant name="INPUT_RIGHT">keyboard_check(vk_right) || keyboard_check(ord("D"))</constant>
     <constant name="INPUT_UP">keyboard_check_pressed(vk_up) || keyboard_check_pressed(ord("W"))</constant>
-    <constant name="INPUT_DOWN">keyboard_check_pressed(vk_down) || keyboard_check_pressed(ord("D"))</constant>
+    <constant name="INPUT_DOWN">keyboard_check_pressed(vk_down) || keyboard_check_pressed(ord("S"))</constant>
     <constant name="INPUT_SHOOT">keyboard_check_pressed(vk_space) || keyboard_check_pressed(vk_enter)</constant>
     <constant name="CAN_SHOOT">instance_exists(oTarget_parent) &amp;&amp; !instance_exists(oBullet) &amp;&amp; !instance_exists(oLevelUp) &amp;&amp; !instance_exists(oGround_explosion)</constant>
   </constants>
