@@ -138,7 +138,45 @@ instance_destroy();
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="oTarget">
+    <event eventtype="4" ename="oPlanet">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>audio_play_sound(snGroundHit, 1, false);
+with(global.dashboard)
+{
+    total_misses++;
+    level_misses[global.level]++;
+}
+global.consecutive_hits = 0;
+
+//Create ground explosion centered on ground-0 of impact point with planet.
+ex = instance_create(x, y, oGround_explosion);
+ex.t_angle = point_direction(other.x, other.y, ex.x, ex.y);
+ex.x = other.x + lengthdir_x(other.radius + ex.radius, ex.t_angle);
+ex.y = other.y + lengthdir_y(other.radius + ex.radius, ex.t_angle);
+
+//destroy the bullet
+instance_destroy();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="oTarget_parent">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -182,44 +220,6 @@ with(global.dashboard)
 }
 
 //destroy bullet
-instance_destroy();
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="oPlanet">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>audio_play_sound(snGroundHit, 1, false);
-with(global.dashboard)
-{
-    total_misses++;
-    level_misses[global.level]++;
-}
-global.consecutive_hits = 0;
-
-//Create ground explosion centered on ground-0 of impact point with planet.
-ex = instance_create(x, y, oGround_explosion);
-ex.t_angle = point_direction(other.x, other.y, ex.x, ex.y);
-ex.x = other.x + lengthdir_x(other.radius + ex.radius, ex.t_angle);
-ex.y = other.y + lengthdir_y(other.radius + ex.radius, ex.t_angle);
-
-//destroy the bullet
 instance_destroy();
 </string>
           </argument>

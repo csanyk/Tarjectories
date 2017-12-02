@@ -48,7 +48,7 @@ if keyboard_check_pressed(ord("N")) &amp;&amp; !keyboard_check(vk_shift)// &amp;
     {
         if !instance_exists(oLevelUp)
         {
-            with oTarget instance_destroy();
+            with oTarget_parent instance_destroy();
             instance_create(0,0,oLevelUp);
         }
     }

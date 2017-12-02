@@ -79,10 +79,6 @@ if instance_exists(target)
 {
     p_angle = point_direction(x, y, target.x, target.y);
 }
-
-
-
-
 </string>
           </argument>
         </arguments>
@@ -108,7 +104,7 @@ if instance_exists(target)
             <string>draw_set_color(c_white);
 draw_circle(x, y, radius, false);
 
-if !instance_exists(oTarget)
+if !instance_exists(oTarget_parent)
 {
     p_x = x;
     p_y = y;

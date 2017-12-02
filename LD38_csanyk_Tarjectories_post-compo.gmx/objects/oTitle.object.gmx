@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>oTarget</parentName>
+  <parentName>oTarget_parent</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>h = 0;
+            <string>hue = 0;
 </string>
           </argument>
         </arguments>
@@ -48,8 +48,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>h = (h+3) mod 255;
-draw_sprite_ext(sprite_index, -1, 0, 0, 1, 1, 0, make_color_hsv(h, 255, 255), 1);
+            <string>///Draw the title sprite
+hue = (hue + 3) mod 255; //Pleasing color shift effect when drawing the title sprite
+draw_sprite_ext(sprite_index, -1, 0, 0, 1, 1, 0, make_color_hsv(hue, 255, 255), 1);
 </string>
           </argument>
         </arguments>

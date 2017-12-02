@@ -52,7 +52,7 @@ alarm[0] = 0.75 * room_speed;
           <argument>
             <kind>1</kind>
             <string>//create Level Up manager object to increase level and start next level
-if !instance_exists(oTarget)
+if !instance_exists(oTarget_parent)
 {
     instance_create(0, 0, oLevelUp);
 }

@@ -73,7 +73,7 @@ radius = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>collateral_damage = collision_circle(x, y, radius, oTarget, false, true); 
+            <string>collateral_damage = collision_circle(x, y, radius, oTarget_parent, false, true); 
 
 if collateral_damage != noone
 {
