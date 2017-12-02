@@ -30,6 +30,8 @@
     <sound>sound\snPlayerScream</sound>
     <sound>sound\snPlayerExplode</sound>
     <sound>sound\snFizzle</sound>
+    <sound>sound\snTimerBeep1</sound>
+    <sound>sound\snTimerBeep2</sound>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\spPlayerTurret</sprite>
