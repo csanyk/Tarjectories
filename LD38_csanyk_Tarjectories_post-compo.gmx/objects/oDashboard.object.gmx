@@ -30,26 +30,25 @@
 global.level = 1;
 
 //Stats
-total_shots = 0;
-total_hits = 0;
-total_misses = 0;
+total_shots       = 0;
+total_hits        = 0;
+total_misses      = 0;
 total_near_misses = 0;
 
-level_shots[global.level]  = 0;
-level_hits[global.level]   = 0;
-level_misses[global.level] = 0;
+level_shots[global.level]       = 0;
+level_hits[global.level]        = 0;
+level_misses[global.level]      = 0;
 level_near_misses[global.level] = 0;
-
-level_points[global.level] = 0;
+level_points[global.level]      = 0;
 
 //Level timer
-level_timer[global.level] = 0;
+level_timer[global.level]       = 0;
 
 //Scorekeeping
-score = 0;
-global.consecutive_hits = 0;
+score                           = 0;
+global.consecutive_hits         = 0;
 
-global.eyes_unlocked = false;
+global.eyes_unlocked            = false;
 </string>
           </argument>
         </arguments>
@@ -80,7 +79,7 @@ global.eyes_unlocked = false;
 //    if oPlayerTurret.elevation &lt; 0 d = "CW  ";
     
 //    dashboard_text = "Level: " + string(global.level) + "            "  +  "     Time: " + string(level_timer[global.level] div room_speed)  + "#" +
-//                     "Score: " + string(global.score) +
+//                     "Score: " + string(score) +
 //                     "##" + 
 //                     "Gravity: ";
                      
@@ -90,23 +89,19 @@ global.eyes_unlocked = false;
 //    dashboard_text += "Power: " + string(oPlayerTurret.shot_power) + "##";
 //    dashboard_text += "Hits:   " + string(level_hits[global.level]) + "#" +
 //                      "Misses: " + string(level_misses[global.level]); 
-//if debug_mode 
-//    {
-//       dashboard_text += "##FPS: " + string(fps_real);
-//    }
-//}
+
 
 dashboard_text = ""; 
-                 
-if debug_mode 
-{
-   dashboard_text += "##FPS: " + string(fps_real) + "##";
-}
 
 dashboard_text = "Level: " + string(global.level) + "#";
 dashboard_text += "Score: " + string(score) + "#";
 dashboard_text += "Hit/Miss: " + string(level_hits[global.level]) + "/" + string(level_misses[global.level]) + "#";
 dashboard_text += "Bonus time: " + string(level_timer[global.level] div room_speed);
+
+if debug_mode 
+{
+   dashboard_text += "##FPS: " + string(fps_real) + "##";
+}
 </string>
           </argument>
         </arguments>
