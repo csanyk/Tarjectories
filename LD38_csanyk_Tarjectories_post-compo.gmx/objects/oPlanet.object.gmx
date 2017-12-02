@@ -80,13 +80,19 @@ if global.eyes_unlocked planet_eyes_init();
 
 if global.eyes_unlocked
 {
-    with left_eye 
+    if instance_exists(left_eye)
     {
-        instance_destroy();
+        with left_eye 
+        {
+            instance_destroy();
+        }
     }
-    with right_eye 
+    if instance_exists(right_eye)
     {
-        instance_destroy();
+        with right_eye 
+        {
+            instance_destroy();
+        }
     }
 }
 </string>
@@ -135,11 +141,17 @@ for (var i = 0; i &lt; targets_number; i++)
 //keep eyes in sync with planet in case planet moved. (Should only happen if planets collide and have to re-adjust.)
 if global.eyes_unlocked
 {
-    left_eye.x = x - (0.4 * radius);
-    left_eye.y = y - (0.25 * radius);
+    if instance_exists(left_eye)
+    {
+        left_eye.x = x - (0.4 * radius);
+        left_eye.y = y - (0.25 * radius);
+    }
     
-    right_eye.x = x + (0.4 * radius)
-    right_eye.y = y - (0.25 * radius);
+    if instance_exists(right_eye)
+    {
+        right_eye.x = x + (0.4 * radius)
+        right_eye.y = y - (0.25 * radius);
+    }
 }
 
 

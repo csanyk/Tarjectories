@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if global.dashboard.level_misses[global.level] == 0
+            <string>tick = 0.5; //adjust seconds per second by this fraction for the countdown display, etc.
+
+if global.dashboard.level_misses[global.level] == 0
      congratulation = "Superb! ";
 else congratulation = "Success! ";
 
@@ -59,7 +61,9 @@ text += "###";
 
 countdown_start = false;
 
-alarm[1]= 1*room_speed;
+alarm[1]= tick * 1 * room_speed;
+
+
 </string>
           </argument>
         </arguments>
@@ -237,7 +241,7 @@ draw_text(view_wport[0] * 0.5, view_hport[0] * 0.5, text);
 
 if countdown_start &amp;&amp; (global.level != 18)
 {
-    countdown = (alarm[0] div (0.75 * room_speed)) + 1;
+    countdown = (alarm[0] div (tick * room_speed)) + 1;
     draw_set_font(fnCountdown);
     draw_text(view_wport[0] * 0.5, view_hport[0] * 0.5, string(countdown));
 }
@@ -277,7 +281,7 @@ if countdown_start &amp;&amp; (global.level != 18)
         }
         else
         {
-            alarm[0] = 0.75 * room_speed * 3;
+            alarm[0] = tick * room_speed * 3;
         }
     }
     text = "";
