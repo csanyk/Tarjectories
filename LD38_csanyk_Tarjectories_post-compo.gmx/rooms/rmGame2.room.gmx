@@ -11,8 +11,6 @@
   <colour>0</colour>
   <showcolour>-1</showcolour>
   <code>//randomize();
-texture_set_interpolation(false);
-instance_create(0, 0, oDeveloperCheats);
 
 var x_avg = 0, y_avg = 0, x_offset, y_offset;
 
@@ -48,7 +46,7 @@ with choose(p1, p2)
   <makerSettings>
     <isSet>-1</isSet>
     <w>1071</w>
-    <h>738</h>
+    <h>1104</h>
     <showGrid>-1</showGrid>
     <showObjects>-1</showObjects>
     <showTiles>-1</showTiles>

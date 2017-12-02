@@ -100,13 +100,14 @@
         <object>objects\oScore</object>
       </objects>
     </objects>
-    <object>objects\oDeveloperCheats</object>
+    <object>objects\oDeveloper_cheats</object>
     <object>objects\oDashboard</object>
     <object>objects\oLevelUp</object>
     <object>objects\oGameOver</object>
     <object>objects\oGameWin</object>
   </objects>
   <rooms name="rooms">
+    <room>rooms\rmInit</room>
     <room>rooms\rmTitle</room>
     <room>rooms\rmGame</room>
     <room>rooms\rmGame2</room>
