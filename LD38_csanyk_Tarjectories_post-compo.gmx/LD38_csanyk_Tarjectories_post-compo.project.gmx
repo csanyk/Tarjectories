@@ -61,6 +61,7 @@
       <object>objects\oPlanet_parent</object>
       <object>objects\oPlayer_parent</object>
       <object>objects\oTarget_parent</object>
+      <object>objects\oBullet_parent</object>
     </objects>
     <objects name="LevelEditor">
       <object>objects\oLevel_data_manager</object>
@@ -91,12 +92,14 @@
       <object>objects\oEye</object>
       <object>objects\oTarget</object>
       <object>objects\oPlanet_averager</object>
+      <object>objects\oCrater</object>
     </objects>
     <objects name="player">
       <object>objects\oPlayerTurret</object>
       <object>objects\oGun</object>
       <objects name="Bullet">
         <object>objects\oBullet</object>
+        <object>objects\oBullet_crater</object>
         <object>objects\oTarget_explosion</object>
         <object>objects\oGround_explosion</object>
         <object>objects\oScore</object>
@@ -112,13 +115,12 @@
     <room>rooms\rmInit</room>
     <room>rooms\rmTitle</room>
     <room>rooms\rmGame</room>
-    <room>rooms\rmGame2</room>
     <room>rooms\rmEnd</room>
     <room>rooms\rmLevelEditor</room>
   </rooms>
   <constants number="28">
-    <constant name="PLANET_RADIUS_MIN">100</constant>
-    <constant name="PLANET_RADIUS_MAX">300</constant>
+    <constant name="PLANET_RADIUS_MIN">75</constant>
+    <constant name="PLANET_RADIUS_MAX">200</constant>
     <constant name="PLANET_SPIN_MIN">0.1</constant>
     <constant name="PLANET_SPIN_MAX">0.4</constant>
     <constant name="PLANET_GRAVITY">0.3 * (power(1.5 * radius / 300, 2))</constant>
