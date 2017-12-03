@@ -35,7 +35,7 @@ if !global.eyes_unlocked
     text += "##!!GOOGLY EYE MODE UNLOCKED!!##";
 }
 text += "##Your score was: " + string(score) + " pts.";
-text += "##Hits: " + string(global.dashboard.total_hits) + "/" + string(global.dashboard.total_shots) + " = " + string_format(100 * global.dashboard.total_hits/global.dashboard.total_shots, 2, 0) + "%";
+text += "##Hits: " + string(global.dashboard.total_hits) + "/" + string(global.dashboard.total_shots) + " = " + string_format(100 * global.dashboard.total_hits/global.dashboard.total_shots, 3, 1) + "%";
 text += "##Press any key to start a new game, #or press Esc to exit.###csanyk for LD48-40##IV - Dec MMXVII ## @csanyk | csanyk.com";
 </string>
           </argument>
