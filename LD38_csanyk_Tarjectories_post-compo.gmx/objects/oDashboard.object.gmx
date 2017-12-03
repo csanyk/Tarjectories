@@ -126,8 +126,12 @@ if debug_mode
             <kind>1</kind>
             <string>if (room == rmGame)
 {
-    //draw_set_color(c_white);
-    draw_set_color(make_color_rgb(223, 223, 223));
+    draw_set_alpha(0.2);
+    draw_set_color(c_black);
+    draw_rectangle(0,0, string_width(dashboard_text) + 20, string_height(dashboard_text) + 20, false);
+    
+    draw_set_alpha(1);
+    draw_set_color(c_yellow);
     draw_set_font(fnDashboard);
     draw_set_halign(fa_left);
     draw_set_valign(fa_top);

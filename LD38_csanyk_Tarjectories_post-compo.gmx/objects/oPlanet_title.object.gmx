@@ -42,8 +42,8 @@ player.y = y + lengthdir_y(radius + 8, 90);
 player.image_angle = 90;
 
 //Instructions text
-instructions = "Adjust Elevation: Left|Right|A|D##Adjust Shot Power: Up|Down|W|S##Fire: [space]|[enter]";
-credits = "by csanyk for LD48-37 -  A Small World";
+instructions = "Adjust Elevation: Left|Right||A|D##Adjust Shot Power: Up|Down||W|S##Fire: [space]||[enter]";
+credits = "by csanyk for LD48-40#The More You Have, The Worse It Is";
 </string>
           </argument>
         </arguments>
@@ -94,7 +94,7 @@ credits = "by csanyk for LD48-37 -  A Small World";
 draw_set_color(make_color_rgb(223, 223, 223));
 draw_set_halign(fa_center);
 draw_set_valign(fa_top);
-draw_text(room_width * 0.5, room_height * 0.88, credits);
+draw_text(room_width * 0.5, room_height * 0.75, credits);
 
 
 draw_set_font(fnDashboard);
@@ -102,7 +102,7 @@ draw_set_font(fnDashboard);
 draw_set_color(make_color_rgb(223, 223, 223));
 draw_set_halign(fa_center);
 draw_set_valign(fa_top);
-draw_text(room_width*0.5, room_height*0.75, instructions);
+draw_text(room_width*0.5, room_height*0.65, instructions);
 </string>
           </argument>
         </arguments>

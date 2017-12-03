@@ -42,6 +42,7 @@
     <sprite>sprites\spTitle</sprite>
     <sprite>sprites\spLevel_Editor</sprite>
     <sprite>sprites\spLevel_Editor_Palette</sprite>
+    <sprite>sprites\spSubtitle</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -118,7 +119,8 @@
     <room>rooms\rmEnd</room>
     <room>rooms\rmLevelEditor</room>
   </rooms>
-  <constants number="28">
+  <constants number="29">
+    <constant name="LAST_LEVEL">24</constant>
     <constant name="PLANET_RADIUS_MIN">75</constant>
     <constant name="PLANET_RADIUS_MAX">200</constant>
     <constant name="PLANET_SPIN_MIN">0.1</constant>

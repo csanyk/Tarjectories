@@ -34,8 +34,8 @@ if file_exists(working_directory+"level_data.txt")
   <clearDisplayBuffer>-1</clearDisplayBuffer>
   <makerSettings>
     <isSet>-1</isSet>
-    <w>1071</w>
-    <h>1104</h>
+    <w>2066</w>
+    <h>1122</h>
     <showGrid>-1</showGrid>
     <showObjects>-1</showObjects>
     <showTiles>-1</showTiles>

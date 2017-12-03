@@ -51,6 +51,7 @@
             <string>///Draw the title sprite
 hue = (hue + 3) mod 255; //Pleasing color shift effect when drawing the title sprite
 draw_sprite_ext(sprite_index, -1, 0, 0, 1, 1, 0, make_color_hsv(hue, 255, 255), 1);
+draw_sprite_ext(spSubtitle, -1, 0, 94, 1, 1, 0, make_color_hsv(hue, 255, 255), 1);
 </string>
           </argument>
         </arguments>

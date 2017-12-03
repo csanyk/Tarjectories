@@ -63,10 +63,10 @@ else
 ///End of level bonus scoring
 timer_bonus = global.level * global.dashboard.level_timer[global.level] * 10;
 
-
+ 
 if (timer_bonus &gt; 0)
 {
-    text += "##Timer bonus: " + string(timer_bonus);
+    congratulation += "##Timer bonus: " + string_format(global.level * 10, 2, 0) + " x " + string(global.dashboard.level_timer[global.level] ) + " ticks = " + string(timer_bonus);
     score += timer_bonus;
 }
 
@@ -167,14 +167,20 @@ instance_destroy();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_halign(fa_center);
+            <string>draw_set_color(c_black);
+draw_set_alpha(0.2);
+draw_rectangle(0, 0, 1280, 720, false);
+
+draw_set_halign(fa_center);
 draw_set_valign(fa_middle);
-draw_set_color(make_color_rgb(223, 223, 223));
+//draw_set_color($DFDFDF);
+draw_set_color(c_yellow);
+draw_set_alpha(1);
 draw_set_font(fnDashboard);
 draw_text(view_wport[0] * 0.5, view_hport[0] * 0.5, text); 
 
 
-if countdown_start &amp;&amp; (global.level != 18)
+if countdown_start &amp;&amp; (global.level != 24)
 {
     countdown = (alarm[0] div (tick * room_speed)) + 1;
     if alarm[0] mod (tick * room_speed) == 0 audio_play_sound(snTimerBeep1, 1, false);
