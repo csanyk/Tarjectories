@@ -26,16 +26,16 @@ var i = 0,
 
 repeat (number_of_planets)
 {
-    planet[i] = instance_create(irandom_range(0, room_width), irandom_range(0, room_height), oPlanet);
+    global.planet[i] = instance_create(irandom_range(0, room_width), irandom_range(0, room_height), oPlanet);
 
-    with planet[i]
+    with global.planet[i]
     {
         x = clamp(x, radius + 100, room_width  - radius - 100);
         y = clamp(y, radius + 100, room_height - radius - 100);
     }
 
-    planet_cluster_center_x += planet[i].x;
-    planet_cluster_center_y += planet[i].y;
+    planet_cluster_center_x += global.planet[i].x;
+    planet_cluster_center_y += global.planet[i].y;
 
     i++;
 }
@@ -49,13 +49,13 @@ offset_y = planet_cluster_center_y - (room_height * 0.5);
 i = 0;
 repeat instance_number(oPlanet)
 {
-    planet[i].x -= offset_x;
-    planet[i].y -= offset_y;
+    global.planet[i].x -= offset_x;
+    global.planet[i].y -= offset_y;
     
     i++;
 }
 
-base_planet = planet[irandom(instance_number(oPlanet) - 1)];
+base_planet = global.planet[irandom(instance_number(oPlanet) - 1)];
 with base_planet
 {
     player = instance_create(x + radius, y + radius, oPlayerTurret);
@@ -68,7 +68,7 @@ global.dashboard.level_timer[global.level] += (3 * room_speed * instance_number(
 //Add 30 seconds to bonus timer for each planet &gt;1
 global.dashboard.level_timer[global.level] += (30 * room_speed * (instance_number(oPlanet) - 1));
 
-if (global.level == 19)
+if (global.level == 24)
 {
     room_goto(rmEnd);
 }

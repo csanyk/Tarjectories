@@ -25,7 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>tick = 0.75; //adjust seconds per second by this fraction for the countdown display, etc.
+            <string>global.planet = 0; // clear array of planets from the just-completed level
+tick = 0.75; //adjust seconds per second by this fraction for the countdown display, etc.
+
+congratulation = "";
+text = "";
 
 //Compose level end text
 

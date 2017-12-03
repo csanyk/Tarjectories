@@ -25,36 +25,44 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/*
-planets = ds_stack_create()
+            <string>var i = 0,
+    planet_cluster_center_x = 0,
+    planet_cluster_center_y = 0,
+    offset_x,
+    offset_y;
 
-var x_avg = 0, y_avg = 0, planet_count = instance_number(oPlanet);
- 
-with oPlanet
+repeat (instance_number(oPlanet))
 {
-     ds_stack_push(oPlanet_averager.planets, id);
+    with global.planet[i]
+    {
+        x = irandom_range(0, room_width);
+        y = irandom_range(0, room_height);
+        x = clamp(x, radius + 100, room_width  - radius - 100);
+        y = clamp(y, radius + 100, room_height - radius - 100);
+    }
+
+    planet_cluster_center_x += global.planet[i].x;
+    planet_cluster_center_y += global.planet[i].y;
+
+    i++;
 }
 
-while ds_stack_size(planets) &gt; 0
-{ 
-      var p = ds_stack_pop(planets);
-      x_avg += p.x;
-      y_avg += p.y; 
-}
- 
-x_avg = x_avg / planet_count;
-y_avg = y_avg / planet_count;
+planet_cluster_center_x /= instance_number(oPlanet);
+planet_cluster_center_y /= instance_number(oPlanet);
 
-//Shift the position of the planets such that their average position is the center of the room.
-x_offset = x_avg - (room_width * 0.5);
-y_offset = y_avg - (room_height * 0.5);
- 
-with oPlanet
+offset_x = planet_cluster_center_x - (room_width  * 0.5);
+offset_y = planet_cluster_center_y - (room_height * 0.5);
+
+i = 0;
+repeat instance_number(oPlanet)
 {
-     x -= other.x_offset;
-     y -= other.y_offset;
-}  
-*/
+    global.planet[i].x -= offset_x;
+    global.planet[i].y -= offset_y;
+    
+    i++;
+}
+
+instance_destroy();
 </string>
           </argument>
         </arguments>
