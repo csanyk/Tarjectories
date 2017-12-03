@@ -41,9 +41,6 @@ level_misses[global.level]      = 0;
 level_near_misses[global.level] = 0;
 level_points[global.level]      = 0;
 
-//Level timer
-level_timer[global.level]       = 0;
-
 //Scorekeeping
 score                           = 0;
 global.consecutive_hits         = 0;
@@ -96,7 +93,6 @@ dashboard_text = "";
 dashboard_text  = "Level: " + string(global.level) + "#";
 dashboard_text += "Score: " + string(score) + "#";
 dashboard_text += "Accuracy: " + string(level_hits[global.level]) + "/" + string(level_shots_fired[global.level]) + "#";
-dashboard_text += "Bonus time: " + string(level_timer[global.level] div room_speed);
 
 if debug_mode 
 {

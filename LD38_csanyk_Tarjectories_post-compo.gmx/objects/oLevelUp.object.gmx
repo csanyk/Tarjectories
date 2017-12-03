@@ -59,17 +59,6 @@ else
                       "% = " + string(level_bonus);
 }
 
-
-///End of level bonus scoring
-timer_bonus = global.level * global.dashboard.level_timer[global.level] * 10;
-
- 
-if (timer_bonus &gt; 0)
-{
-    congratulation += "##Timer bonus: " + string_format(global.level * 10, 2, 0) + " x " + string(global.dashboard.level_timer[global.level] ) + " ticks = " + string(timer_bonus);
-    score += timer_bonus;
-}
-
 text = congratulation + "###Advance to next level!###";
 
 countdown_start = false;
@@ -127,11 +116,10 @@ if (global.level != LAST_LEVEL) {audio_play_sound(snTimerBeep2, 1, false);}
 
 with(global.dashboard)
 {
-    level_shots_fired[global.level]        = 0;
+    level_shots_fired[global.level]  = 0;
     level_hits[global.level]         = 0;
     level_misses[global.level]       = 0;
     level_near_misses[global.level]  = 0;
-    level_timer[global.level]        = 0;
     level_points[global.level]       = 0;
 }
 
@@ -173,7 +161,6 @@ draw_rectangle(0, 0, 1280, 720, false);
 
 draw_set_halign(fa_center);
 draw_set_valign(fa_middle);
-//draw_set_color($DFDFDF);
 draw_set_color(c_yellow);
 draw_set_alpha(1);
 draw_set_font(fnDashboard);
