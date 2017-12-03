@@ -93,7 +93,7 @@ global.eyes_unlocked            = false;
 
 dashboard_text = ""; 
 
-dashboard_text = "Level: " + string(global.level) + "#";
+dashboard_text  = "Level: " + string(global.level) + "#";
 dashboard_text += "Score: " + string(score) + "#";
 dashboard_text += "Hit/Miss: " + string(level_hits[global.level]) + "/" + string(level_misses[global.level]) + "#";
 dashboard_text += "Bonus time: " + string(level_timer[global.level] div room_speed);
@@ -124,7 +124,7 @@ if debug_mode
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (room != rmEnd) &amp;&amp; (room != rmTitle)
+            <string>if (room == rmGame)
 {
     //draw_set_color(c_white);
     draw_set_color(make_color_rgb(223, 223, 223));

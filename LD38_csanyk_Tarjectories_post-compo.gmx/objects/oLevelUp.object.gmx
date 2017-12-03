@@ -116,101 +116,23 @@ global.level++;
 
 with(global.dashboard)
 {
-    level_shots[global.level]  = 0;
-    level_hits[global.level]   = 0;
-    level_misses[global.level] = 0;
+    level_shots[global.level]        = 0;
+    level_hits[global.level]         = 0;
+    level_misses[global.level]       = 0;
     level_near_misses[global.level]  = 0;
-    level_timer[global.level]  = 0;
-    level_points[global.level] = 0;
+    level_timer[global.level]        = 0;
+    level_points[global.level]       = 0;
 }
 
-//Set up level timer
-with global.dashboard
-{
-    level_timer[global.level] = (max(5, 15 - global.level) + 3 * instance_number(oTarget_parent)) * room_speed;
-}
 
-//Add 60 seconds to bonus timer if &gt;1 planets
-if instance_number(oPlanet) &gt; 1 
-{
-    global.dashboard.level_timer[global.level] += 30 * room_speed;
-}
-
-if (global.level == 9)
-{
-    room_goto(room_next(room));
-    global.dashboard.level_timer[global.level] += 30 * room_speed;  
-}
-else
-{
-    //Destroy the planet, player from the previous level
-    with oPlayerTurret instance_destroy();
-    
-    var planet_count = 0;
-    with oPlanet
-    {
-        instance_destroy();
-        planet_count++;   
-    }
-    
-    //Create new planet(s)
-    var p, i, x_avg = 0, y_avg = 0;
-    for (i = 0; i &lt; planet_count; i++)
-    {
-        p[i] = instance_create(room_width*0.5, room_height*0.5, oPlanet);
-        
-        //Now that the size of the new planet is known, ensure it is at least 100 px away from the edge of the room
-        p[i].x = irandom_range(p[i].radius + 100, room_width - (p[i].radius + 100));
-        p[i].y = irandom_range(p[i].radius + 100, room_height - (p[i].radius + 100));
-        
-        p[i].x = clamp(p[i].x, p[i].radius + 100, room_width - p[i].radius - 100);
-        p[i].y = clamp(p[i].y, p[i].radius + 100, room_height - p[i].radius - 100);
-        
-        x_avg += p[i].x;
-        y_avg += p[i].y;
-    }
-    
-    //Shift the position of the planets such that their average position is the center of the room.
-    x_avg = x_avg / planet_count;
-    y_avg = y_avg / planet_count;
-    
-    x_offset = x_avg - (room_width * 0.5);
-    y_offset = y_avg - (room_height * 0.5);
-    
-    
-    with oPlanet
-    {
-        x -= other.x_offset;
-        y -= other.y_offset;
-    }    
-    
-    
-    //Add a player to planet 0
-    if instance_number(oPlanet) &gt; 1
-    {
-        base = choose(p[0], p[1]);
-    }
-    else
-    {
-        base = p[0];
-    }
-    
-    with base
-    {
-        player = instance_create(x + radius, y + radius, oPlayerTurret);
-    }
-}
-
-if (global.level == 19)
-{
-    room_goto(room_next(room));
-}
 
 //Capture the level data
 //with(oLevel_data_manager) instance_destroy(); // Destroy the old one.
 //instance_create(10, 640, oLevel_data_manager); // Create a new one to capture the fresh level data.
 
 //Destroy the Level Up object
+
+room_restart();
 instance_destroy();
 </string>
           </argument>

@@ -10,12 +10,68 @@
   <persistent>0</persistent>
   <colour>0</colour>
   <showcolour>-1</showcolour>
-  <code>planet = instance_create(room_width * 0.5, room_height * 0.5, oPlanet);
-with planet
+  <code>number_of_planets = (global.level div 9) + 1;
+
+/*
+We want to center the action in the window. 
+To this end, we need to get the average position of all the planets, 
+then calculate an offset from this position and the center of the room, 
+then shift the position of all the planets by this offset.
+*/
+var i = 0,
+    planet_cluster_center_x = 0,
+    planet_cluster_center_y = 0,
+    offset_x,
+    offset_y;
+
+repeat (number_of_planets)
 {
-    player = instance_create(x + radius, y, oPlayerTurret);
+    planet[i] = instance_create(irandom_range(0, room_width), irandom_range(0, room_height), oPlanet);
+
+    with planet[i]
+    {
+        x = clamp(x, radius + 100, room_width  - radius - 100);
+        y = clamp(y, radius + 100, room_height - radius - 100);
+    }
+
+    planet_cluster_center_x += planet[i].x;
+    planet_cluster_center_y += planet[i].y;
+
+    i++;
 }
-global.dashboard.level_timer[global.level] = (max(5, 15-global.level) + 3 * instance_number(oTarget_parent)) * room_speed;
+
+planet_cluster_center_x /= instance_number(oPlanet);
+planet_cluster_center_y /= instance_number(oPlanet);
+
+offset_x = planet_cluster_center_x - (room_width  * 0.5);
+offset_y = planet_cluster_center_y - (room_height * 0.5);
+
+i = 0;
+repeat instance_number(oPlanet)
+{
+    planet[i].x -= offset_x;
+    planet[i].y -= offset_y;
+    
+    i++;
+}
+
+base_planet = planet[irandom(instance_number(oPlanet) - 1)];
+with base_planet
+{
+    player = instance_create(x + radius, y + radius, oPlayerTurret);
+}
+
+//Set up level timer
+global.dashboard.level_timer[global.level]  =  max(5, 16 - global.level) * room_speed;
+global.dashboard.level_timer[global.level] += (3 * room_speed * instance_number(oTarget_parent));
+
+//Add 30 seconds to bonus timer for each planet &gt;1
+global.dashboard.level_timer[global.level] += (30 * room_speed * (instance_number(oPlanet) - 1));
+
+if (global.level == 19)
+{
+    room_goto(rmEnd);
+}
 
 //instance_create(10, 640, oLevel_data_manager);</code>
   <enableViews>-1</enableViews>
@@ -34,8 +90,8 @@ global.dashboard.level_timer[global.level] = (max(5, 15-global.level) + 3 * inst
     <deleteUnderlyingObj>0</deleteUnderlyingObj>
     <deleteUnderlyingTiles>-1</deleteUnderlyingTiles>
     <page>1</page>
-    <xoffset>0</xoffset>
-    <yoffset>0</yoffset>
+    <xoffset>1</xoffset>
+    <yoffset>-117</yoffset>
   </makerSettings>
   <backgrounds>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>

@@ -21,19 +21,21 @@ if !instance_exists(oDashboard)
 
 
 planet = instance_create(room_width * 0.5, room_height, oPlanet_title);
-instance_create(0,0,oTitle);
+instance_create(0, 0, oTitle);
 
+/*
 if file_exists(working_directory+"level_data.txt")
 {
    file_delete(working_directory+"level_data.txt");
-}</code>
+}
+*/</code>
   <enableViews>-1</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
   <makerSettings>
     <isSet>-1</isSet>
-    <w>2066</w>
-    <h>1122</h>
+    <w>1071</w>
+    <h>1104</h>
     <showGrid>-1</showGrid>
     <showObjects>-1</showObjects>
     <showTiles>-1</showTiles>

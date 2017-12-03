@@ -11,7 +11,7 @@
   <colour>0</colour>
   <showcolour>-1</showcolour>
   <code>//randomize();
-
+/*
 var x_avg = 0, y_avg = 0, x_offset, y_offset;
 
 p1 = instance_create(irandom_range(0, room_width), irandom_range(0, room_height), oPlanet);
@@ -38,6 +38,8 @@ with choose(p1, p2)
 {
     player = instance_create(x + radius, y + radius, oPlayerTurret);
 }
+*/
+
 
 //instance_create(10, 640, oLevel_data_manager);</code>
   <enableViews>-1</enableViews>

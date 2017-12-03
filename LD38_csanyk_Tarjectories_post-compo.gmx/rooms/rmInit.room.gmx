@@ -10,7 +10,8 @@
   <persistent>0</persistent>
   <colour>0</colour>
   <showcolour>-1</showcolour>
-  <code>texture_set_interpolation(false);
+  <code>randomize();
+texture_set_interpolation(false);
 instance_create(0, 0, oDeveloper_cheats);
 
 
