@@ -27,43 +27,50 @@
             <kind>1</kind>
             <string>tick = 0.75; //adjust seconds per second by this fraction for the countdown display, etc.
 
-if global.dashboard.level_misses[global.level] == 0
-     congratulation = "Superb! ";
-else congratulation = "Success! ";
+//Compose level end text
 
-text = congratulation + "Advance to next level!";
+if (global.dashboard.level_misses[global.level] == 0)
+{
+    perfect_bonus = power(5000 * global.dashboard.level_hits[global.level], instance_number(oPlanet)); //if you get a perfect score on a multi-planet level, you deserve it
+    score += perfect_bonus;
+    
+    congratulation = "Superb! ";
+    congratulation += "PERFECT Bonus: " + string(perfect_bonus) + "!!!!##";
+}
+else 
+{
+    level_bonus = round(global.dashboard.level_points[global.level] * 
+                         (global.dashboard.level_hits[global.level] / 
+                           (global.dashboard.level_hits[global.level] + global.dashboard.level_misses[global.level])
+                         )
+                       );
+    score += level_bonus;
+
+    congratulation = "Success!##";
+    congratulation += "Level " + string(global.level) + " points: "  + string(global.dashboard.level_points[global.level]) + 
+                      "##Accuracy: " + 
+                      string(global.dashboard.level_hits[global.level]) + "/" + string(global.dashboard.level_hits[global.level] + global.dashboard.level_misses[global.level]) + "#" +
+                      "Level Bonus: " + string(global.dashboard.level_points[global.level]) + " x " + 
+                      string_format(global.dashboard.level_hits[global.level] / (global.dashboard.level_hits[global.level] + global.dashboard.level_misses[global.level]) * 100, 2, 0) + 
+                      "% = " + string(level_bonus);
+}
+
 
 ///End of level bonus scoring
 timer_bonus = global.level * global.dashboard.level_timer[global.level] * 10;
 
 
-if timer_bonus &gt; 0
+if (timer_bonus &gt; 0)
 {
     text += "##Timer bonus: " + string(timer_bonus);
     score += timer_bonus;
 }
 
-if global.dashboard.level_misses[global.level] == 0
-{
-    perfect_bonus = power(10000 * global.dashboard.level_hits[global.level], instance_number(oPlanet)); //if you get a perfect score on a multi-planet level you deserve it
-    text += "##Perfect bonus: " + string(perfect_bonus) + "!!!!";
-    score += perfect_bonus;
-}
-else
-{
-    level_bonus = global.dashboard.level_points[global.level] * global.dashboard.level_hits[global.level] / global.dashboard.level_misses[global.level];
-    text += "##Level bonus: " + string(level_bonus);
-    score += level_bonus;
-}
-
-text += "###";
-
+text = congratulation + "###Advance to next level!###";
 
 countdown_start = false;
 
-alarm[1]= tick * 1 * room_speed;
-
-
+alarm[1]= 1 * room_speed;
 </string>
           </argument>
         </arguments>
