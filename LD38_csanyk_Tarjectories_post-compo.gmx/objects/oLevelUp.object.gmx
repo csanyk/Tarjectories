@@ -45,7 +45,7 @@ else
 {
     level_bonus = round(global.dashboard.level_points[global.level] * 
                          (global.dashboard.level_hits[global.level] / 
-                           (global.dashboard.level_hits[global.level] + global.dashboard.level_misses[global.level])
+                          global.dashboard.level_shots_fired[global.level]                           
                          )
                        );
     score += level_bonus;
@@ -53,9 +53,9 @@ else
     congratulation = "Success!##";
     congratulation += "Level " + string(global.level) + " points: "  + string(global.dashboard.level_points[global.level]) + 
                       "##Accuracy: " + 
-                      string(global.dashboard.level_hits[global.level]) + "/" + string(global.dashboard.level_hits[global.level] + global.dashboard.level_misses[global.level]) + "#" +
+                      string(global.dashboard.level_hits[global.level]) + "/" + string(global.dashboard.level_shots_fired[global.level]) + "#" +
                       "Level Bonus: " + string(global.dashboard.level_points[global.level]) + " x " + 
-                      string_format(global.dashboard.level_hits[global.level] / (global.dashboard.level_hits[global.level] + global.dashboard.level_misses[global.level]) * 100, 2, 0) + 
+                      string_format(global.dashboard.level_hits[global.level] / global.dashboard.level_shots_fired[global.level] * 100, 2, 0) + 
                       "% = " + string(level_bonus);
 }
 
@@ -120,14 +120,14 @@ alarm[1]= 1 * room_speed;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>audio_play_sound(snTimerBeep2, 1, false);
-
-//Advance the level
+            <string>//Advance the level
 global.level++;
+
+if (global.level != LAST_LEVEL) {audio_play_sound(snTimerBeep2, 1, false);}
 
 with(global.dashboard)
 {
-    level_shots[global.level]        = 0;
+    level_shots_fired[global.level]        = 0;
     level_hits[global.level]         = 0;
     level_misses[global.level]       = 0;
     level_near_misses[global.level]  = 0;
@@ -180,7 +180,7 @@ draw_set_font(fnDashboard);
 draw_text(view_wport[0] * 0.5, view_hport[0] * 0.5, text); 
 
 
-if countdown_start &amp;&amp; (global.level != 24)
+if countdown_start &amp;&amp; (global.level != LAST_LEVEL)
 {
     countdown = (alarm[0] div (tick * room_speed)) + 1;
     if alarm[0] mod (tick * room_speed) == 0 audio_play_sound(snTimerBeep1, 1, false);
@@ -218,7 +218,7 @@ if countdown_start &amp;&amp; (global.level != 24)
     }
     else 
     {
-        if global.level == 18
+        if global.level == (LAST_LEVEL - 1)
         {
             alarm[0] = 1;
         }

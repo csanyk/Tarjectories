@@ -35,7 +35,7 @@ total_hits        = 0;
 total_misses      = 0;
 total_near_misses = 0;
 
-level_shots[global.level]       = 0;
+level_shots_fired[global.level]       = 0;
 level_hits[global.level]        = 0;
 level_misses[global.level]      = 0;
 level_near_misses[global.level] = 0;

@@ -156,6 +156,8 @@ instance_destroy();
           <argument>
             <kind>1</kind>
             <string>audio_play_sound(snGroundHit, 1, false);
+
+//Update stats
 with(global.dashboard)
 {
     total_misses++;

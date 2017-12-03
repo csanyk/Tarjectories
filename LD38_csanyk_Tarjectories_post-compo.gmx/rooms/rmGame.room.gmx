@@ -68,7 +68,7 @@ global.dashboard.level_timer[global.level] += (3 * room_speed * instance_number(
 //Add 30 seconds to bonus timer for each planet &gt;1
 global.dashboard.level_timer[global.level] += (30 * room_speed * (instance_number(oPlanet) - 1));
 
-if (global.level == 24)
+if (global.level == LAST_LEVEL)
 {
     room_goto(rmEnd);
 }
