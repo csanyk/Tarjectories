@@ -10,7 +10,8 @@
   <persistent>0</persistent>
   <colour>0</colour>
   <showcolour>-1</showcolour>
-  <code>number_of_planets = (global.level div 9) + 1;
+  <code>//Spawn new planets for the level
+number_of_planets = NUMBER_OF_PLANETS;
 
 /*
 We want to center the action in the window. 
@@ -30,8 +31,8 @@ repeat (number_of_planets)
 
     with global.planet[i]
     {
-        x = clamp(x, radius + 100, room_width  - radius - 100);
-        y = clamp(y, radius + 100, room_height - radius - 100);
+        x = clamp(x, radius + 100, room_width  - (radius + 100));
+        y = clamp(y, radius + 100, room_height - (radius + 100));
     }
 
     planet_cluster_center_x += global.planet[i].x;
@@ -55,19 +56,14 @@ repeat instance_number(oPlanet)
     i++;
 }
 
-base_planet = global.planet[irandom(instance_number(oPlanet) - 1)];
-with base_planet
+//Spawn a player instance on one of the planets, the home planet
+var home_planet = global.planet[irandom(instance_number(oPlanet) - 1)];
+with home_planet
 {
     player = instance_create(x + radius, y + radius, oPlayerTurret);
 }
 
-//Set up level timer
-global.dashboard.level_timer[global.level]  =  max(5, 16 - global.level) * room_speed;
-global.dashboard.level_timer[global.level] += (3 * room_speed * instance_number(oTarget_parent));
-
-//Add 30 seconds to bonus timer for each planet &gt;1
-global.dashboard.level_timer[global.level] += (30 * room_speed * (instance_number(oPlanet) - 1));
-
+//Check for victory
 if (global.level == LAST_LEVEL)
 {
     room_goto(rmEnd);
@@ -79,8 +75,8 @@ if (global.level == LAST_LEVEL)
   <clearDisplayBuffer>-1</clearDisplayBuffer>
   <makerSettings>
     <isSet>-1</isSet>
-    <w>1071</w>
-    <h>1104</h>
+    <w>2066</w>
+    <h>1122</h>
     <showGrid>-1</showGrid>
     <showObjects>-1</showObjects>
     <showTiles>-1</showTiles>

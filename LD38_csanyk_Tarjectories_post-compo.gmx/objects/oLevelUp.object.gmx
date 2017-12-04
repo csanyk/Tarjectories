@@ -125,6 +125,7 @@ with(global.dashboard)
     level_misses[global.level]       = 0;
     level_near_misses[global.level]  = 0;
     level_points[global.level]       = 0;
+    level_par[global.level]          = PAR;
 }
 
 
@@ -133,8 +134,7 @@ with(global.dashboard)
 //with(oLevel_data_manager) instance_destroy(); // Destroy the old one.
 //instance_create(10, 640, oLevel_data_manager); // Create a new one to capture the fresh level data.
 
-//Destroy the Level Up object
-
+//Destroy the Level Up object and start level
 room_restart();
 instance_destroy();
 </string>
