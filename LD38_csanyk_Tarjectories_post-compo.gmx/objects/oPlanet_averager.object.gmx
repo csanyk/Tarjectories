@@ -35,10 +35,8 @@ repeat (instance_number(oPlanet))
 {
     with global.planet[i]
     {
-        x = irandom_range(0, room_width);
-        y = irandom_range(0, room_height);
-        x = clamp(x, radius + 100, room_width  - radius - 100);
-        y = clamp(y, radius + 100, room_height - radius - 100);
+        x = irandom_range(radius + 100, room_width  - radius - 100);
+        y = irandom_range(radius + 100, room_height - radius - 100);
     }
 
     planet_cluster_center_x += global.planet[i].x;

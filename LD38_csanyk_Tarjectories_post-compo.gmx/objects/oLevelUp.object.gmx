@@ -59,6 +59,10 @@ else
                       "% = " + string(level_bonus);
 }
 
+par_bonus = ((max(0, PAR - global.dashboard.level_shots_fired[global.level]) * 1000) div 1000) * 1000;
+score += par_bonus;
+congratulation += "##Par bonus: " + string(par_bonus);
+
 text = congratulation + "###Advance to next level!###";
 
 countdown_start = false;
@@ -157,7 +161,7 @@ instance_destroy();
             <kind>1</kind>
             <string>draw_set_color(c_black);
 draw_set_alpha(0.2);
-draw_rectangle(0, 0, 1280, 720, false);
+draw_rectangle(0, 0, view_wport[0], view_hport[0], false);
 
 draw_set_halign(fa_center);
 draw_set_valign(fa_middle);

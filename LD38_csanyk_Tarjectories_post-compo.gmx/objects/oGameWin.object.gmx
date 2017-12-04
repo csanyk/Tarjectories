@@ -29,7 +29,7 @@
 
 hue = 0;
 
-text = "You win!##Thanks for playing TARJECTORIES.##";
+text = "You win!##Thanks for playing TARJECTORIES II.##";
 if !global.eyes_unlocked 
 {
     text += "##!!GOOGLY EYE MODE UNLOCKED!!##";

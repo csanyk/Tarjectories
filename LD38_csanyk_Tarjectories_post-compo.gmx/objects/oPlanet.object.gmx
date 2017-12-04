@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>//Set up planet sprite
 sprite_setup = false;
-radius = irandom_range(PLANET_RADIUS_MIN, PLANET_RADIUS_MAX / instance_number(oPlanet));
+radius = irandom_range(PLANET_RADIUS_MIN, max(PLANET_RADIUS_MIN, PLANET_RADIUS_MAX / instance_number(oPlanet)));
 
 //set up spin
 spin = choose(-1,1) * random_range(PLANET_SPIN_MIN, PLANET_SPIN_MAX);
@@ -42,8 +42,8 @@ color = PLANET_COLOR;//make_color_hsv(PLANET_C_HUE, PLANET_C_SAT, PLANET_C_VAL);
 player = noone; //we now create the player instance outside of the object, so that we can  have multiple planets, yet just one player instance.
 
 //Set up targets 
-targets_number = PLANET_TARGETS_NUMBER;//clamp((global.level mod 9 div 3) + (global.level div 17), 1, 6)
-if (global.level &gt;= 18) {targets_number = 4;}
+targets_number = TARGETS_PER_PLANET; //PLANET_TARGETS_NUMBER;//clamp((global.level mod 9 div 3) + (global.level div 17), 1, 6)
+//if (global.level &gt;= 18) {targets_number = 4;}
 for (var i = 0; i &lt; targets_number; i++)
 {
     var t_angle = irandom_range(T_ANGLE_MIN, T_ANGLE_MAX);
@@ -159,17 +159,6 @@ if global.eyes_unlocked
     {
         right_eye.x = x + (0.4 * radius)
         right_eye.y = y - (0.25 * radius);
-    }
-}
-
-
-//Manage level timer TODO: remove from planet object, so 2-planet levels don't double-decrement the timer.
-if !instance_exists(oLevelUp)
-{
-    with global.dashboard
-    {
-        level_timer[global.level]--;
-        level_timer[global.level] = max(0, level_timer[global.level]);
     }
 }
 </string>

@@ -35,11 +35,12 @@ total_hits        = 0;
 total_misses      = 0;
 total_near_misses = 0;
 
-level_shots_fired[global.level]       = 0;
+level_shots_fired[global.level] = 0;
 level_hits[global.level]        = 0;
 level_misses[global.level]      = 0;
 level_near_misses[global.level] = 0;
 level_points[global.level]      = 0;
+level_par[global.level]         = PAR;
 
 //Scorekeeping
 score                           = 0;
@@ -93,6 +94,7 @@ dashboard_text = "";
 dashboard_text  = "Level: " + string(global.level) + "#";
 dashboard_text += "Score: " + string(score) + "#";
 dashboard_text += "Accuracy: " + string(level_hits[global.level]) + "/" + string(level_shots_fired[global.level]) + "#";
+dashboard_text += "Par: " + string(level_shots_fired[global.level]) + "/" + string(PAR);
 
 if debug_mode 
 {
@@ -132,6 +134,34 @@ if debug_mode
     draw_set_halign(fa_left);
     draw_set_valign(fa_top);
     draw_text(x, y, dashboard_text);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if debug_mode
+{
+    draw_set_color(c_red);
+    draw_set_alpha(0.5);
+    draw_rectangle(100, 100, room_width - 100, room_height - 100, true);
 }
 </string>
           </argument>
